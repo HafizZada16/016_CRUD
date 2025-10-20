@@ -43,7 +43,7 @@ app.get('/api/users', (req, res) => {
 app.post('/api/users', (req, res) => {
     const {name, nim, kelas} = req.body;
 
-    if (!name || !email || !kelas) {
+    if (!name || !nim || !kelas) {
         return res.status(400).json({ message : "Nama, nim, dan kelas harus diisi."});
     }
 
