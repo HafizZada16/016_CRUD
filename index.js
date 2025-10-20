@@ -60,7 +60,7 @@ app.post('api/users', (req, res) => {
     );
 });
 
-app.put("api/users/:id", (req, res) => {
+app.put('api/users/:id', (req, res) => {
     const userId = req.params.id;
     const { name, nim, kelas } = req.body;
     db.query(
@@ -74,4 +74,15 @@ app.put("api/users/:id", (req, res) => {
             res.json({ message: "User updated successfully" });
         }
     );
+});
+
+app.delete('api/users/:id', (req, res) => {
+    const userId = req.params.id;
+    db.query('DELETE FROM users WHERE id = ?', [userId], (err, results) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ message: "Database Error" });
+        } 
+        res.json({ message: "User deleted successfully" });
+    });
 });
