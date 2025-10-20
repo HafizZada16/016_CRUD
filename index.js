@@ -29,7 +29,7 @@ db.connect((err) => {
     console.log('Connected Sussessfully');
 });
 
-app.get('api/users', (req, res) => { 
+app.get('/api/users', (req, res) => { 
     db.query('SELECT * from mahasiswa', (err, results) => {
         if (err) {  
             console.error('Error executing query:' + err.stack);
@@ -40,7 +40,7 @@ app.get('api/users', (req, res) => {
     });
 });
 
-app.post('api/users', (req, res) => {
+app.post('/api/users', (req, res) => {
     const {name, nim, kelas} = req.body;
 
     if (!name || !email || !kelas) {
@@ -60,7 +60,7 @@ app.post('api/users', (req, res) => {
     );
 });
 
-app.put('api/users/:id', (req, res) => {
+app.put('/api/users/:id', (req, res) => {
     const userId = req.params.id;
     const { name, nim, kelas } = req.body;
     db.query(
@@ -76,7 +76,7 @@ app.put('api/users/:id', (req, res) => {
     );
 });
 
-app.delete('api/users/:id', (req, res) => {
+app.delete('/api/users/:id', (req, res) => {
     const userId = req.params.id;
     db.query('DELETE FROM mahasiswa WHERE id = ?', [userId], (err, results) => {
         if (err) {
