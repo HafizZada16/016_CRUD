@@ -44,8 +44,16 @@ app.post('api/users', (req, res) => {
     const {name, nim, kelas} = req.body;
 
     if (!name || !email || !kelas) {
-        return res.status(400).json({ message : 'Nama, nim, dan kelas harus diisi'});
+        return res.status(400).json({ message : "Nama, nim, dan kelas harus diisi"});
     }
 
-    
+   db.query("INSERT INTO users (name, nim, kelas) VALUES (?, ?, ?)", 
+    [name, nim, kelas], 
+    (err, results) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ message: "Database Error"});
+        } 
+        res.status(201).json({ message: "User created successfully"});
+    });
 });
