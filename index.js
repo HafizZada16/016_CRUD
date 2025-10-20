@@ -30,7 +30,7 @@ db.connect((err) => {
 });
 
 app.get('api/users', (req, res) => { 
-    db.query('SELECT * from users', (err, results) => {
+    db.query('SELECT * from mahasiswa', (err, results) => {
         if (err) {  
             console.error('Error executing query:' + err.stack);
             res.status(500).send('Error fetching users');
@@ -48,7 +48,7 @@ app.post('api/users', (req, res) => {
     }
 
     db.query(
-        "INSERT INTO users (name, nim, kelas) VALUES (?, ?, ?)", 
+        "INSERT INTO mahasiswa (name, nim, kelas) VALUES (?, ?, ?)", 
         [name, nim, kelas], 
         (err, results) => {
             if (err) {
@@ -78,7 +78,7 @@ app.put('api/users/:id', (req, res) => {
 
 app.delete('api/users/:id', (req, res) => {
     const userId = req.params.id;
-    db.query('DELETE FROM users WHERE id = ?', [userId], (err, results) => {
+    db.query('DELETE FROM mahasiswa WHERE id = ?', [userId], (err, results) => {
         if (err) {
             console.error(err);
             return res.status(500).json({ message: "Database Error" });
