@@ -1,4 +1,4 @@
-* Prak3
+* Praktikum 3
 
 Tampilan GET API Mahasiswa : <img width="1920" height="1080" alt="Screenshot 2025-10-20 131541" src="https://github.com/user-attachments/assets/b8d97314-80b7-491f-94a2-187038e4f070" />
 
