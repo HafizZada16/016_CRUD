@@ -41,15 +41,15 @@ app.get('/api/users', (req, res) => {
 });
 
 app.post('/api/users', (req, res) => {
-    const {name, nim, kelas} = req.body;
+    const {nama, nim, kelas} = req.body;
 
-    if (!name || !nim || !kelas) {
+    if (!nama || !nim || !kelas) {
         return res.status(400).json({ message : "Nama, nim, dan kelas harus diisi."});
     }
 
     db.query(
         "INSERT INTO mahasiswa (name, nim, kelas) VALUES (?, ?, ?)", 
-        [name, nim, kelas], 
+        [nama, nim, kelas], 
         (err, results) => {
             if (err) {
                 console.error(err);
